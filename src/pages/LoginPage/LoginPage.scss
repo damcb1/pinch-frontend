@@ -1,17 +1,11 @@
 @use '../../styles/variables' as *;
 
-.register {
+.login {
   width: 100%;
   max-width: 400px;
 
   &__title {
     margin-bottom: var(--space-5);
-  }
-
-  &__subtitle {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin: 0 0 var(--space-5);
   }
 
   &__error {

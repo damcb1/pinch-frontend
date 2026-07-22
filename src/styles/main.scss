@@ -1,6 +1,10 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+html, body, #root {
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
