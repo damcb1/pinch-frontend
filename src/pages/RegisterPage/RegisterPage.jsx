@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../../services/authService';
 import Input from '../../components/common/Input/Input.jsx';
-import Button from '../../components/common/Button/ßutton.jsx';
+import Button from '../../components/common/Button/Button.jsx';
 import AuthLayout from "../../components/layout/AuthLayout/AuthLayout.jsx";
 import './RegisterPage.scss';
 

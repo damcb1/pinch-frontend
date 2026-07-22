@@ -5,14 +5,14 @@ const Button = ({
     type = 'button',
     variant = 'primary',
     disabled = false,
-    onclick,
+    onClick,
 }) => {
     return (
         <button
             type={type}
             className={`button button--${variant}`}
             disabled={disabled}
-            onClick={onclick}
+            onClick={onClick}
             >
             {children}
         </button>
