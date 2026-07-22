@@ -1,13 +1,25 @@
-import {BrowserRouter, Routes, Navigate, Route} from "react-router-dom";
-import RegisterPage from "../pages/RegisterPage/RegisterPage.jsx";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import PrivateRoute from './PrivateRoute';
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/registro" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
 
-                <Route path="*" element={<Navigate to="/registro" replace />} />
+                <Route
+                    path="/mis-recetas"
+                    element={
+                        <PrivateRoute>
+                            <div style={{ padding: 40 }}>Mis recetas (próximamente)</div>
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
         </BrowserRouter>
     );

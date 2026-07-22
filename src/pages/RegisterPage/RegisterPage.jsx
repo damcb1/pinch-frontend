@@ -7,10 +7,12 @@ import AuthLayout from "../../components/layout/AuthLayout/AuthLayout.jsx";
 import './RegisterPage.scss';
 
 const RegisterPage = () => {
+
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -25,6 +27,11 @@ const RegisterPage = () => {
             newErrors.password = 'La contraseña es obligatoria';
         } else if (password.length < 8) {
             newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
+        }
+        if (!confirmPassword) {
+            newErrors.confirmPassword = 'Confirma tu contraseña';
+        } else if (password !== confirmPassword) {
+            newErrors.confirmPassword = 'Las contraseñas no coinciden';
         }
         return newErrors;
     };
@@ -83,6 +90,16 @@ const RegisterPage = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         error={errors.password}
+                        autoComplete="new-password"
+                    />
+
+                    <Input
+                        id="confirmPassword"
+                        label="Confirmar contraseña"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        error={errors.confirmPassword}
                         autoComplete="new-password"
                     />
 
