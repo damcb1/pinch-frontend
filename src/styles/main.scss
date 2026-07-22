@@ -19,6 +19,25 @@ h1, h2, h3 {
   margin: 0;
 }
 
+a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:visited {
+    color: var(--text-primary);
+  }
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
 button, a {
   @include focus-visible;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text-primary);
 }
