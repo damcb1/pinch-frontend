@@ -20,21 +20,6 @@
     box-sizing: border-box;
   }
 
-  &__avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 26px;
-    margin-bottom: var(--space-5);
-  }
-
   &__field {
     display: flex;
     flex-direction: column;

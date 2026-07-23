@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../../services/userService';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/common/Button/Button';
+import Avatar from "../../components/common/Avatar/Avatar.jsx";
 import './AccountPage.scss';
 
 const AccountPage = () => {
@@ -31,16 +32,12 @@ const AccountPage = () => {
         navigate('/login');
     };
 
-    const initial = email ? email.charAt(0).toUpperCase() : '';
-
     return (
         <main className="account">
             <h1 className="account__title">Tu perfil</h1>
 
             <div className="account__card">
-                <div className="account__avatar" aria-hidden="true">
-                    {initial}
-                </div>
+                <Avatar email={email} size={64} />
 
                 <div className="account__field">
                     <span className="account__label">Correo</span>

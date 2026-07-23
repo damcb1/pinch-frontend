@@ -38,7 +38,7 @@ const LoginPage = () => {
 
         try {
             const data = await login(email, password);
-            authLogin(data.token);
+            authLogin(data.token, data.email);
             navigate('/mis-recetas');
         } catch (err) {
             const data = err.response?.data;
