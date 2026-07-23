@@ -1,19 +1,26 @@
+import { Link } from 'react-router-dom';
 import './Button.scss';
 
 const Button = ({
-    children,
-    type = 'button',
-    variant = 'primary',
-    disabled = false,
-    onClick,
-}) => {
+                    children,
+                    to,
+                    href,
+                    type = 'button',
+                    variant = 'primary',
+                    size = 'md',
+                    disabled = false,
+                    onClick,
+                }) => {
+    const className = `button button--${variant} button--${size}`;
+
+    if (to) {
+        return <Link to={to} className={className}>{children}</Link>;
+    }
+    if (href) {
+        return <a href={href} className={className}>{children}</a>;
+    }
     return (
-        <button
-            type={type}
-            className={`button button--${variant}`}
-            disabled={disabled}
-            onClick={onClick}
-            >
+        <button type={type} className={className} disabled={disabled} onClick={onClick}>
             {children}
         </button>
     );

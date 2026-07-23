@@ -1,0 +1,29 @@
+@use "../../../styles/variables" as *;
+
+.step-card {
+  &__num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 8px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+}

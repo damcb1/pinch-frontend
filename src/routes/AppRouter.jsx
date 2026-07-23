@@ -3,6 +3,7 @@ import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import AccountPage from "../pages/AccountPage/AccountPage.jsx";
+import LandingPage from "../pages/LandingPage/LandingPage.jsx";
 
 const AppRouter = () => {
     return (
@@ -10,6 +11,9 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/registro" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+
+                <Route
+                    path="/" element={<LandingPage /> } />
 
                 <Route
                     path="/mis-recetas"
@@ -28,7 +32,7 @@ const AppRouter = () => {
                     }
                 />
 
-                <Route path="*" element={<Navigate to="/login" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>
     );
