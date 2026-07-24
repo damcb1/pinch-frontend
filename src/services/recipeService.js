@@ -9,3 +9,8 @@ export const getRecipe = async (id) => {
     const response = await api.get(`/recipes/${id}`);
     return response.data;
 };
+
+export const updateRecipe = async (id, recipeData) => {
+    const response = await api.put(`/recipes/${id}`, recipeData);
+    return response.data;
+};
