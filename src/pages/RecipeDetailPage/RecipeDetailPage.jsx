@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {href, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { getRecipe } from '../../services/recipeService';
 import { DIFFICULTY_LABELS } from '../../constants/recipeOptions';
 import AppLayout from '../../components/layout/AppLayout/AppLayout';
