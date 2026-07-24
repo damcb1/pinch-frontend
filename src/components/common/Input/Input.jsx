@@ -8,6 +8,8 @@ const Input = ({
                    onChange,
                    error,
                    autoComplete,
+                   placeholder,
+                   variant,
                }) => {
     return (
         <div className="input">
@@ -16,11 +18,12 @@ const Input = ({
             </label>
             <input
                 id={id}
-                className={`input__field ${error ? 'input__field--error' : ''}`}
+                className={`input__field ${variant ? `input__field--${variant}` : ''} ${error ? 'input__field--error' : ''}`}
                 type={type}
                 value={value}
                 onChange={onChange}
                 autoComplete={autoComplete}
+                placeholder={placeholder}
                 aria-invalid={error ? 'true' : 'false'}
                 aria-describedby={error ? `${id}-error` : undefined}
             />

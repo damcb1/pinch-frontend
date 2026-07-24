@@ -4,17 +4,19 @@ import HeroRecipeCard from '../../components/landing/HeroRecipeCard/HeroRecipeCa
 import StepCard from '../../components/landing/StepCard/StepCard';
 import WayCard from '../../components/landing/WayCard/WayCard';
 import LandingFooter from '../../components/landing/LandingFooter/LandingFooter';
-import Button from "../../components/common/Button/Button.jsx";
+import Button from '../../components/common/Button/Button';
 import './LandingPage.scss';
 
 const LandingPage = () => {
     const { isAuthenticated } = useAuth();
-    const primaryTarget = isAuthenticated ? '/mis-recetas' : '/registro';
+    const newRecipeTarget = isAuthenticated ? '/nueva-receta' : '/registro';
+    const myRecipesTarget = isAuthenticated ? '/mis-recetas' : '/registro';
 
     return (
         <div className="landing">
             <LandingNav />
 
+            {/* HERO */}
             <header className="landing__hero">
                 <div className="landing__hero-text">
                     <p className="landing__eyebrow">De caption a receta</p>
@@ -23,11 +25,11 @@ const LandingPage = () => {
                     </h1>
                     <p className="landing__subtitle">
                         Pega el link de cualquier blog o web de recetas. Pinch saca los
-                        ingredientes, los pasos, el tiempo y las raciones — fácil de buscar cuando
+                        ingredientes, los pasos, el tiempo y las raciones — encuéntralos rápido cuando
                         ya tienes las manos manchadas.
                     </p>
                     <div className="landing__hero-cta">
-                        <Button to={primaryTarget} variant="primary">
+                        <Button to={newRecipeTarget} variant="primary">
                             Guardar mi primera receta
                         </Button>
                         <Button href="#como-funciona" variant="text">
@@ -41,6 +43,7 @@ const LandingPage = () => {
                 </div>
             </header>
 
+            {/* CÓMO FUNCIONA */}
             <section id="como-funciona" className="landing__section">
                 <div className="landing__section-head">
                     <h2 className="landing__section-title">Cómo funciona</h2>
@@ -56,10 +59,11 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* DOS FORMAS */}
             <section id="formas" className="landing__section">
                 <div className="landing__section-head">
                     <h2 className="landing__section-title">Dos formas de guardar una receta</h2>
-                    <p className="landing__section-sub">Si tienes un link o un texto, Pinch lo puede leer.</p>
+                    <p className="landing__section-sub">Si tiene un link o un texto, Pinch lo puede leer.</p>
                 </div>
                 <div className="landing__ways">
                     <WayCard icon="↗" title="Pega el link"
@@ -69,6 +73,7 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* CTA FINAL */}
             <section className="landing__cta-final">
                 <div className="landing__cta-inner">
                     <h2 className="landing__cta-title">
@@ -79,7 +84,7 @@ const LandingPage = () => {
                             ? 'Vuelve a tu recetario y sigue guardando.'
                             : 'Crea tu cuenta y guarda tu primera receta en menos de un minuto.'}
                     </p>
-                    <Button to={primaryTarget} variant="primary">
+                    <Button to={myRecipesTarget} variant="primary">
                         {isAuthenticated ? 'Ir a mis recetas' : 'Crear cuenta gratis'}
                     </Button>
                     {!isAuthenticated && (

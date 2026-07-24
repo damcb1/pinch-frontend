@@ -4,6 +4,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import AccountPage from "../pages/AccountPage/AccountPage.jsx";
 import LandingPage from "../pages/LandingPage/LandingPage.jsx";
+import NewRecipePage from "../pages/NewRecipePage/NewRecipePage.jsx";
 
 const AppRouter = () => {
     return (
@@ -21,6 +22,15 @@ const AppRouter = () => {
                         <PrivateRoute>
                             <div style={{ padding: 40 }}>Mis recetas (próximamente)</div>
                         </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path="/nueva-receta"
+                    element={
+                    <PrivateRoute>
+                        <NewRecipePage />
+                    </PrivateRoute>
                     }
                 />
                 <Route

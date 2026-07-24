@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.ingredient-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-bottom: var(--space-2);
+
+  input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text-primary);
+    min-height: var(--touch-target);
+    box-sizing: border-box;
+    @include focus-visible;
+  }
+
+  &__qty { width: 70px; flex-shrink: 0; font-family: var(--font-mono); }
+  &__unit { width: 90px; flex-shrink: 0; }
+  &__name { flex: 1; min-width: 0; }
+
+  &__remove {
+    flex-shrink: 0;
+    width: var(--touch-target);
+    height: var(--touch-target);
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    @include focus-visible;
+
+    &:hover { color: var(--text-primary); }
+  }
+}
