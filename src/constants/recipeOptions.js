@@ -5,4 +5,12 @@ export const DIFFICULTIES = [
 ];
 
 export const CUISINES = ['Italiana', 'Mexicana', 'Asiática', 'Mediterránea', 'Vegetariana', 'Otra']
-    .map((c) => ({ value: c, label: c }));
+    .map((c) => (
+        { value: c, label: c }
+    ));
+
+export const DIFFICULTY_LABELS = {
+    EASY: 'Fácil',
+    MEDIUM: 'Media',
+    HARD: 'Difícil',
+};

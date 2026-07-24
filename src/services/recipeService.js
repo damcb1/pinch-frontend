@@ -4,3 +4,8 @@ export const createRecipe = async (recipeData) => {
     const response = await api.post('/recipes', recipeData);
     return response.data;
 };
+
+export const getRecipe = async (id) => {
+    const response = await api.get(`/recipes/${id}`);
+    return response.data;
+};
