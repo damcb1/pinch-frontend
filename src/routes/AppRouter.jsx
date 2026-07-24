@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute';
 import AccountPage from "../pages/AccountPage/AccountPage.jsx";
 import LandingPage from "../pages/LandingPage/LandingPage.jsx";
 import NewRecipePage from "../pages/NewRecipePage/NewRecipePage.jsx";
+import RecipeDetailPage from "../pages/RecipeDetailPage/RecipeDetailPage.jsx";
 
 const AppRouter = () => {
     return (
@@ -33,6 +34,16 @@ const AppRouter = () => {
                     </PrivateRoute>
                     }
                 />
+
+                <Route
+                    path="/recetas/:id"
+                    element={
+                    <PrivateRoute>
+                        <RecipeDetailPage />
+                    </PrivateRoute>
+                    }
+                />
+
                 <Route
                     path="/cuenta"
                     element={

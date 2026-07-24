@@ -1,0 +1,146 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.recipe-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+
+  @include desktop {
+    flex-direction: row;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  &__photo {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: linear-gradient(135deg, #F2B333 0%, #E9A012 45%, #17191B 130%);
+
+    @include desktop {
+      width: 46%;
+      flex-shrink: 0;
+      height: 70vh;
+      position: sticky;
+      top: 88px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__source {
+    position: absolute;
+    bottom: var(--space-3);
+    left: var(--space-3);
+    background: rgba(23, 25, 27, 0.7);
+    color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--surface);
+      background: rgba(23, 25, 27, 0.9);
+    }
+  }
+
+  &__content {
+    width: 100%;
+    @include desktop { width: 54%; }
+  }
+
+  &__title {
+    font-size: 28px;
+    margin: 0 0 var(--space-2);
+    @include desktop { font-size: 36px; }
+  }
+
+  &__meta {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-4);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+  }
+
+  &__section {
+    margin-bottom: var(--space-6);
+  }
+
+  &__section-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    margin: 0 0 var(--space-3);
+  }
+
+  &__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__step {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  &__step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    @include focus-visible;
+
+    &.is-done {
+      background: var(--text-primary);
+      color: var(--surface);
+    }
+  }
+
+  &__step-text {
+    font-size: 15px;
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+
+  &__status {
+    text-align: center;
+    padding: var(--space-7) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    color: var(--text-secondary);
+  }
+}

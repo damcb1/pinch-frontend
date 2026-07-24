@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.ingredient-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-1);
+  min-height: var(--touch-target);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  @include focus-visible;
+
+  &__box {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-primary);
+  }
+
+  &__amount {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--text-primary);
+    min-width: 70px;
+  }
+
+  &__name {
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+
+  &.is-checked {
+    .ingredient-check__box {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .ingredient-check__amount,
+    .ingredient-check__name {
+      color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+  }
+}
