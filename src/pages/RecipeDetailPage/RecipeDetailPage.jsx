@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
-import { getRecipe } from '../../services/recipeService';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getRecipe, deleteRecipe } from '../../services/recipeService';
 import { DIFFICULTY_LABELS } from '../../constants/recipeOptions';
 import AppLayout from '../../components/layout/AppLayout/AppLayout';
 import Button from '../../components/common/Button/Button';
 import IngredientCheck from '../../components/recipe/IngredientCheck/IngredientCheck';
+import Modal from "../../components/common/Modal/Modal.jsx";
 import './RecipeDetailPage.scss';
 
 const RecipeDetailPage = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [recipe, setRecipe] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
     const [checked, setChecked] = useState({});
     const [doneSteps, setDoneSteps] = useState({});
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     useEffect(() => {
         const fetchRecipe = async () => {
@@ -37,8 +41,20 @@ const RecipeDetailPage = () => {
         setChecked((prev) => ({ ...prev, [index]: !prev[index] }));
     };
 
-    const toogleStep = (index) => {
+    const togleStep = (index) => {
         setDoneSteps((prev) => ({ ...prev, [index]: !prev[index] }));
+    };
+
+    const handleDelete = async () => {
+        setIsDeleting(true);
+        try {
+            await deleteRecipe(id);
+            navigate('/mis-recetas');
+        } catch (err) {
+            setIsDeleting(false);
+            setShowDeleteModal(false);
+            alert('No se pudo eliminar la receta.');
+        }
     };
 
     if (isLoading) {
@@ -87,7 +103,7 @@ const RecipeDetailPage = () => {
 
                     <div className="recipe-detail__actions">
                         <Button to={`/recetas/${id}/editar`} variant="secondary" size="sm">Editar</Button>
-                        <Button variant="secondary" size="sm" onClick={() => {}}>Borrar</Button>
+                        <Button variant="secondary" size="sm" onClick={() => setShowDeleteModal(true)}>Borrar</Button>
                     </div>
 
                     {recipe.description && (
@@ -116,7 +132,7 @@ const RecipeDetailPage = () => {
                                     <button
                                         type="button"
                                         className={`recipe-detail__step-num ${doneSteps[i] ? 'is-done' : ''}`}
-                                        onClick={() => toogleStep(i)}
+                                        onClick={() => togleStep(i)}
                                         aria-pressed={!!doneSteps[i]}
                                         aria-label={`Marcar paso ${i + 1} como hecho`}
                                     >
@@ -129,6 +145,19 @@ const RecipeDetailPage = () => {
                     </section>
                 </div>
             </div>
+
+            {showDeleteModal && (
+                <Modal
+                    title="¿Quieres eliminar esta receta?"
+                    confirmLabel="Eliminar"
+                    onConfirm={handleDelete}
+                    onCancel={() => setShowDeleteModal(false)}
+                    isProcessing={isDeleting}
+                >
+                    Esta acción no se puede deshacer. La receta "{recipe.title}" se eliminará para siempre.
+                </Modal>
+            )}
+
         </AppLayout>
     );
 };

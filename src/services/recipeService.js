@@ -14,3 +14,7 @@ export const updateRecipe = async (id, recipeData) => {
     const response = await api.put(`/recipes/${id}`, recipeData);
     return response.data;
 };
+
+export const deleteRecipe = async (id) => {
+    await api.delete(`/recipes/${id}`);
+};
