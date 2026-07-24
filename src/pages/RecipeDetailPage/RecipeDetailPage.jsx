@@ -41,7 +41,7 @@ const RecipeDetailPage = () => {
         setChecked((prev) => ({ ...prev, [index]: !prev[index] }));
     };
 
-    const togleStep = (index) => {
+    const toggleStep = (index) => {
         setDoneSteps((prev) => ({ ...prev, [index]: !prev[index] }));
     };
 
@@ -132,7 +132,7 @@ const RecipeDetailPage = () => {
                                     <button
                                         type="button"
                                         className={`recipe-detail__step-num ${doneSteps[i] ? 'is-done' : ''}`}
-                                        onClick={() => togleStep(i)}
+                                        onClick={() => toggleStep(i)}
                                         aria-pressed={!!doneSteps[i]}
                                         aria-label={`Marcar paso ${i + 1} como hecho`}
                                     >
