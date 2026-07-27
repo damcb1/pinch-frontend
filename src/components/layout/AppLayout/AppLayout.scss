@@ -22,10 +22,31 @@
     text-decoration: none;
   }
 
-  &__actions {
+  &__header-right {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-primary);
+
+    &.active {
+      color: var(--accent);
+    }
+
+    &--desktop {
+      display: none;
+      @include desktop { display: inline; }
+    }
+  }
+
+  &__new-desktop {
+    display: none;
+    @include desktop { display: block; }
   }
 
   &__avatar-link {
@@ -36,6 +57,44 @@
   &__main {
     max-width: 1100px;
     margin: 0 auto;
-    padding: var(--space-5) var(--space-5) var(--space-7);
+    padding: var(--space-5) var(--space-5) 88px;
+
+    @include desktop {
+      padding: var(--space-5) var(--space-5) var(--space-7);
+    }
+  }
+
+  &__bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 0;
+    min-height: 56px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    &.active {
+      color: var(--accent);
+    }
   }
 }

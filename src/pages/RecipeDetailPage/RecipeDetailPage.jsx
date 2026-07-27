@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../../services/recipeService';
 import { DIFFICULTY_LABELS } from '../../constants/recipeOptions';
-import AppLayout from '../../components/layout/AppLayout/AppLayout';
 import Button from '../../components/common/Button/Button';
 import IngredientCheck from '../../components/recipe/IngredientCheck/IngredientCheck';
 import Modal from "../../components/common/Modal/Modal.jsx";
@@ -58,21 +57,15 @@ const RecipeDetailPage = () => {
     };
 
     if (isLoading) {
-        return (
-            <AppLayout>
-                <p className="recipe-detail__status">Cargando…</p>
-            </AppLayout>
-        );
+        return <p className="recipe-detail__status">Cargando…</p>;
     }
 
     if (error) {
         return (
-            <AppLayout>
-                <div className="recipe-detail__status">
-                    <p>{error}</p>
-                    <Button to="/mis-recetas" variant="secondary">Volver a mis recetas</Button>
-                </div>
-            </AppLayout>
+            <div className="recipe-detail__status">
+                <p>{error}</p>
+                <Button to="/mis-recetas" variant="secondary">Volver a mis recetas</Button>
+            </div>
         );
     }
 
@@ -84,7 +77,7 @@ const RecipeDetailPage = () => {
     ].filter(Boolean).join(' · ');
 
     return (
-        <AppLayout>
+        <>
             <div className="recipe-detail">
                 <div className="recipe-detail__photo">
                     {recipe.imageUrl && (
@@ -92,9 +85,9 @@ const RecipeDetailPage = () => {
                     )}
                     {recipe.sourceUrl && (
                         <a href={recipe.sourceUrl} target="_blank" rel="noopener noreferrer" className="recipe-detail__source">
-                        Ver original ↗
+                            Ver original ↗
                         </a>
-                        )}
+                    )}
                 </div>
 
                 <div className="recipe-detail__content">
@@ -157,8 +150,7 @@ const RecipeDetailPage = () => {
                     Esta acción no se puede deshacer. La receta "{recipe.title}" se eliminará para siempre.
                 </Modal>
             )}
-
-        </AppLayout>
+        </>
     );
 };
 

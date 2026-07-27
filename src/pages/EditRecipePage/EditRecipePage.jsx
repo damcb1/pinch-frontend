@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipe, updateRecipe } from '../../services/recipeService';
-import AppLayout from '../../components/layout/AppLayout/AppLayout';
 import RecipeForm from '../../components/recipe/RecipeForm/RecipeForm';
 import Button from '../../components/common/Button/Button';
 
@@ -36,27 +35,23 @@ const EditRecipePage = () => {
     };
 
     if (isLoading) {
-        return <AppLayout><p style={{ textAlign: 'center', padding: 40 }}>Cargando…</p></AppLayout>;
+        return <p style={{ textAlign: 'center', padding: 40 }}>Cargando…</p>;
     }
 
     if (error) {
         return (
-            <AppLayout>
-                <div style={{ textAlign: 'center', padding: 40 }}>
-                    <p>{error}</p>
-                    <Button to="/mis-recetas" variant="secondary">Volver a mis recetas</Button>
-                </div>
-            </AppLayout>
+            <div style={{ textAlign: 'center', padding: 40 }}>
+                <p>{error}</p>
+                <Button to="/mis-recetas" variant="secondary">Volver a mis recetas</Button>
+            </div>
         );
     }
 
     return (
-        <AppLayout>
-            <div className="recipe-page">
-                <h1 className="recipe-page__title">Editar receta</h1>
-                <RecipeForm initialValues={recipe} onSubmit={handleUpdate} submitLabel="Guardar cambios" />
-            </div>
-        </AppLayout>
+        <div className="recipe-page">
+            <h1 className="recipe-page__title">Editar receta</h1>
+            <RecipeForm initialValues={recipe} onSubmit={handleUpdate} submitLabel="Guardar cambios" />
+        </div>
     );
 };
 
