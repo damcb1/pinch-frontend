@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
+import AppLayout from '../components/layout/AppLayout/AppLayout';
 import AccountPage from "../pages/AccountPage/AccountPage.jsx";
 import LandingPage from "../pages/LandingPage/LandingPage.jsx";
 import NewRecipePage from "../pages/NewRecipePage/NewRecipePage.jsx";
@@ -15,54 +16,21 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/registro" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<LandingPage />} />
 
                 <Route
-                    path="/" element={<LandingPage /> } />
-
-                <Route
-                    path="/nueva-receta"
                     element={
-                    <PrivateRoute>
-                        <NewRecipePage />
-                    </PrivateRoute>
+                        <PrivateRoute>
+                            <AppLayout />
+                        </PrivateRoute>
                     }
-                />
-
-                <Route
-                    path="/recetas/:id"
-                    element={
-                    <PrivateRoute>
-                        <RecipeDetailPage />
-                    </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/mis-recetas"
-                    element={
-                    <PrivateRoute>
-                        <MyRecipesPage />
-                    </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/recetas/:id/editar"
-                    element={
-                    <PrivateRoute>
-                        <EditRecipePage />
-                    </PrivateRoute>
-                    }
-                />
-
-                <Route
-                    path="/cuenta"
-                    element={
-                    <PrivateRoute>
-                        <AccountPage />
-                    </PrivateRoute>
-                    }
-                />
+                >
+                    <Route path="/nueva-receta" element={<NewRecipePage />} />
+                    <Route path="/recetas/:id" element={<RecipeDetailPage />} />
+                    <Route path="/mis-recetas" element={<MyRecipesPage />} />
+                    <Route path="/recetas/:id/editar" element={<EditRecipePage />} />
+                    <Route path="/cuenta" element={<AccountPage />} />
+                </Route>
 
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

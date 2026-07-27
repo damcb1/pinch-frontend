@@ -33,7 +33,7 @@ const AccountPage = () => {
     };
 
     return (
-        <main className="account">
+        <div className="account">
             <h1 className="account__title">Tu perfil</h1>
 
             <div className="account__card">
@@ -50,7 +50,7 @@ const AccountPage = () => {
                     Cerrar sesión
                 </Button>
             </div>
-        </main>
+        </div>
     );
 };
 
