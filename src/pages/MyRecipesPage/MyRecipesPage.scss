@@ -44,4 +44,78 @@
     margin: 0 0 var(--space-3);
     line-height: 1.5;
   }
+
+  &__search {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text-primary);
+    min-height: var(--touch-target);
+    margin-bottom: var(--space-4);
+    @include focus-visible;
+  }
+
+  &__filters-toggle {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    padding: var(--space-2) var(--space-4);
+    min-height: var(--touch-target);
+    margin-bottom: var(--space-4);
+    @include focus-visible;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__filters {
+    display: none;
+    margin-bottom: var(--space-5);
+
+    &.is-open {
+      display: block;
+    }
+
+    @include desktop {
+      &, &.is-open {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-5);
+        align-items: flex-start;
+      }
+    }
+
+    .chip-group__legend {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+  }
+
+  &__clear {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2) 0;
+    min-height: var(--touch-target);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    @include focus-visible;
+
+    &:hover { color: var(--accent); }
+  }
 }
