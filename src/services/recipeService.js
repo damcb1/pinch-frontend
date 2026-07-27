@@ -18,3 +18,8 @@ export const updateRecipe = async (id, recipeData) => {
 export const deleteRecipe = async (id) => {
     await api.delete(`/recipes/${id}`);
 };
+
+export const getMyRecipes = async () => {
+    const response = await api.get('/recipes');
+    return response.data;
+}
