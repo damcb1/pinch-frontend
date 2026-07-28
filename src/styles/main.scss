@@ -28,10 +28,6 @@ a {
   text-decoration: underline;
   text-underline-offset: 3px;
 
-  &:visited {
-    color: var(--text-primary);
-  }
-
   &:hover {
     color: var(--accent);
   }

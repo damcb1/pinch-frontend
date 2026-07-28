@@ -18,7 +18,7 @@ const AppLayout = () => {
                         Mis recetas
                     </NavLink>
                     <div className="app-layout__new-desktop">
-                        <Button to="/nueva-receta" variant="primary" size="sm">+ Nueva receta</Button>
+                        <Button to="/importar" variant="primary" size="sm">+ Nueva receta</Button>
                     </div>
 
                     <Link to="/cuenta" className="app-layout__avatar-link" aria-label="Ver mi perfil">
@@ -36,7 +36,7 @@ const AppLayout = () => {
                     <BookOpen size={22} aria-hidden="true" />
                     <span>Recetas</span>
                 </NavLink>
-                <NavLink to="/nueva-receta" className="app-layout__tab">
+                <NavLink to="/importar" className="app-layout__tab">
                     <Plus size={22} aria-hidden="true" />
                     <span>Nueva</span>
                 </NavLink>

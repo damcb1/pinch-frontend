@@ -9,6 +9,7 @@ import NewRecipePage from "../pages/NewRecipePage/NewRecipePage.jsx";
 import RecipeDetailPage from "../pages/RecipeDetailPage/RecipeDetailPage.jsx";
 import EditRecipePage from "../pages/EditRecipePage/EditRecipePage.jsx";
 import MyRecipesPage from "../pages/MyRecipesPage/MyRecipesPage.jsx";
+import ImportRecipePage from "../pages/ImportRecipePage/ImportRecipePage.jsx";
 
 const AppRouter = () => {
     return (
@@ -26,6 +27,7 @@ const AppRouter = () => {
                     }
                 >
                     <Route path="/nueva-receta" element={<NewRecipePage />} />
+                    <Route path="/importar" element={<ImportRecipePage />} />
                     <Route path="/recetas/:id" element={<RecipeDetailPage />} />
                     <Route path="/mis-recetas" element={<MyRecipesPage />} />
                     <Route path="/recetas/:id/editar" element={<EditRecipePage />} />
