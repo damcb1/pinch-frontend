@@ -40,6 +40,17 @@
       background: var(--text-primary);
       color: var(--accent);
     }
+
+    &:disabled {
+      background: var(--border);
+      color: var(--text-secondary);
+      opacity: 1;
+    }
+
+    &:disabled:hover {
+      background: var(--border);
+      color: var(--text-secondary);
+    }
   }
 
   &--secondary {
