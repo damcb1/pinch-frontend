@@ -85,12 +85,18 @@ const ImportRecipePage = () => {
     }
 
     if (status === 'review') {
+        const missingSteps = !draft.steps || draft.steps.length === 0;
         return (
             <div className="import-page">
                 <h1 className="import-page__title">Revisa antes de guardar</h1>
                 <p className="import-page__hint">
                     Revisa los datos y corrige lo que haga falta antes de guardar.
                 </p>
+                {missingSteps && (
+                    <p className="import-page__notice" role="status">
+                        No pudimos leer los pasos de esta receta. Añádelos abajo antes de guardar.
+                    </p>
+                )}
                 <RecipeForm initialValues={draft} onSubmit={handleSave} submitLabel="Guardar receta" />
             </div>
         );
