@@ -99,10 +99,6 @@ const RecipeDetailPage = () => {
                         <Button variant="secondary" size="sm" onClick={() => setShowDeleteModal(true)}>Borrar</Button>
                     </div>
 
-                    {recipe.description && (
-                        <p className="recipe-detail__description">{recipe.description}</p>
-                    )}
-
                     <section className="recipe-detail__section">
                         <h2 className="recipe-detail__section-title">Ingredientes</h2>
                         <div className="recipe-detail__ingredients">
