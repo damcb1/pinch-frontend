@@ -25,8 +25,13 @@
       pointer-events: none;
     }
 
-    &--caption { background: var(--text-primary); }
-    &--clean { background: #fff; border: 1px solid var(--border); }
+    &--caption {
+      background: var(--text-primary);
+    }
+    &--clean {
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
   }
 
   &__source {

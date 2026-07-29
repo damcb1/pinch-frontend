@@ -46,9 +46,11 @@ const AccountPage = () => {
           </span>
                 </div>
 
-                <Button variant="secondary" onClick={handleLogout}>
+                <div className="account__actions">
+                    <Button variant="secondary" onClick={handleLogout}>
                     Cerrar sesión
                 </Button>
+                </div>
             </div>
         </div>
     );

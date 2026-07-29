@@ -3,6 +3,7 @@ import { BookOpen, Plus, User } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import Button from '../../common/Button/Button';
 import Avatar from '../../common/Avatar/Avatar';
+import ThemeToggle from "../../common/ThemeToggle/ThemeToggle.jsx";
 import './AppLayout.scss';
 
 const AppLayout = () => {
@@ -20,6 +21,8 @@ const AppLayout = () => {
                     <div className="app-layout__new-desktop">
                         <Button to="/importar" variant="primary" size="sm">+ Nueva receta</Button>
                     </div>
+
+                    <ThemeToggle />
 
                     <Link to="/cuenta" className="app-layout__avatar-link" aria-label="Ver mi perfil">
                         <Avatar email={email} size={40} />
