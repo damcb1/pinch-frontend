@@ -1,0 +1,43 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+html, body, #root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+button, a {
+  @include focus-visible;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text-primary);
+}

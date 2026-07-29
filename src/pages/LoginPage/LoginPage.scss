@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+
+.login {
+  width: 100%;
+  max-width: 400px;
+
+  &__title {
+    margin-bottom: var(--space-5);
+  }
+
+  &__error {
+    font-size: 14px;
+    color: #C0392B;
+    margin-bottom: var(--space-3);
+  }
+}

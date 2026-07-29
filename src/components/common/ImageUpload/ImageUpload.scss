@@ -1,0 +1,66 @@
+@use '../../../styles/variables' as *;
+
+.image-upload {
+  margin: var(--space-4) 0;
+
+  &__label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: var(--space-4);
+  }
+
+  &__preview {
+    position: relative;
+    margin-bottom: var(--space-4);
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    display: block;
+  }
+
+  &__remove {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    min-height: var(--touch-target);
+    padding: 0 var(--space-3);
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-target);
+    padding: 0 var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+  }
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  &__error {
+    font-size: 14px;
+    color: #C0392B;
+    margin: var(--space-2) 0;
+  }
+}

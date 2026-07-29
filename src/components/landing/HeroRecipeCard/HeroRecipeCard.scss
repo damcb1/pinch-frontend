@@ -1,0 +1,145 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.hero-card {
+  &__frame {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    height: 360px;
+    margin: 0 auto;
+
+    @include desktop { height: 400px; }
+  }
+
+  &__layer {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    padding: 26px;
+    box-sizing: border-box;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &--caption {
+      background: var(--text-primary);
+    }
+    &--clean {
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+  }
+
+  &__source {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9AA0A6;
+    margin: 0 0 14px;
+  }
+
+  &__caption {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--surface);
+    margin: 0;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 18px;
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #9AA0A6;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 0 0 10px;
+  }
+
+  &__recipe-meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 18px;
+  }
+
+  &__ingredients {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  &__ing {
+    display: flex;
+    gap: 10px;
+
+    span:last-child { color: var(--text-secondary); }
+  }
+
+  &__qty {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  &__cuisine {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: var(--text-primary);
+  }
+
+  &__replay {
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    padding: 8px 0;
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card__layer { transition: none; }
+}
