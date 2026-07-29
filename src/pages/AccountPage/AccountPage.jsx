@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getCurrentUser } from '../../services/userService';
+import { getCurrentUser, deleteAccount } from '../../services/userService';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/common/Button/Button';
 import Avatar from "../../components/common/Avatar/Avatar.jsx";
+import Modal from "../../components/common/Modal/Modal.jsx";
 import './AccountPage.scss';
 
 const AccountPage = () => {
@@ -12,6 +13,8 @@ const AccountPage = () => {
 
     const [email, setEmail] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -28,8 +31,21 @@ const AccountPage = () => {
     }, []);
 
     const handleLogout = () => {
+        navigate('/');
         logout();
-        navigate('/login');
+    };
+
+    const handleDeleteAccount = async () => {
+        setIsDeleting(true);
+        try {
+            await deleteAccount();
+            navigate('/');
+            logout();
+        } catch (err) {
+            setIsDeleting(false);
+            setShowDeleteModal(false);
+            alert('No se pudo eliminar la cuenta.');
+        }
     };
 
     return (
@@ -50,8 +66,23 @@ const AccountPage = () => {
                     <Button variant="secondary" onClick={handleLogout}>
                     Cerrar sesión
                 </Button>
+                    <Button variant="secondary" onClick={() => setShowDeleteModal(true)}>
+                        Eliminar cuenta
+                    </Button>
                 </div>
             </div>
+
+            {showDeleteModal && (
+                <Modal
+                    title="¿Quieres eliminar tu cuenta?"
+                    confirmLabel="Eliminar cuenta"
+                    onConfirm={handleDeleteAccount}
+                    onCancel={() => setShowDeleteModal(false)}
+                    isProcessing={isDeleting}
+                >
+                    Esta acción no se puede deshacer. Se eliminarán tu cuenta y todas tus recetas para siempre.
+                </Modal>
+            )}
         </div>
     );
 };
