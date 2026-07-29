@@ -16,6 +16,7 @@ const RecipeForm = ({ initialValues, onSubmit, submitLabel = 'Guardar receta' })
     const [difficulty, setDifficulty] = useState(init.difficulty || null);
     const [cuisine, setCuisine] = useState(init.cuisine || null);
     const [sourceUrl, setSourceUrl] = useState(init.sourceUrl || '');
+    const [imageUrl] = useState(init.imageUrl || null);
     const [ingredients, setIngredients] = useState(
         init.ingredients && init.ingredients.length > 0
             ? init.ingredients.map((i) => ({ qty: i.qty || '', unit: i.unit || '', name: i.name || '' }))
@@ -71,6 +72,7 @@ const RecipeForm = ({ initialValues, onSubmit, submitLabel = 'Guardar receta' })
             difficulty,
             cuisine,
             sourceUrl: sourceUrl || null,
+            imageUrl: imageUrl || null,
             ingredients: ingredients.filter((i) => i.name.trim()),
             steps: steps.filter((s) => s.trim()),
         };
