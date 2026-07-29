@@ -5,6 +5,7 @@ import Button from '../../common/Button/Button';
 import ChipGroup from '../../common/ChipGroup/ChipGroup';
 import IngredientRow from '../IngredientRow/IngredientRow';
 import StepRow from '../StepRow/StepRow';
+import ImageUpload from "../../common/ImageUpload/ImageUpload.jsx";
 import './RecipeForm.scss';
 
 const RecipeForm = ({ initialValues, onSubmit, submitLabel = 'Guardar receta' }) => {
@@ -16,7 +17,7 @@ const RecipeForm = ({ initialValues, onSubmit, submitLabel = 'Guardar receta' })
     const [difficulty, setDifficulty] = useState(init.difficulty || null);
     const [cuisine, setCuisine] = useState(init.cuisine || null);
     const [sourceUrl, setSourceUrl] = useState(init.sourceUrl || '');
-    const [imageUrl] = useState(init.imageUrl || null);
+    const [imageUrl, setImageUrl] = useState(init.imageUrl || null);
     const [ingredients, setIngredients] = useState(
         init.ingredients && init.ingredients.length > 0
             ? init.ingredients.map((i) => ({ qty: i.qty || '', unit: i.unit || '', name: i.name || '' }))
@@ -96,6 +97,8 @@ const RecipeForm = ({ initialValues, onSubmit, submitLabel = 'Guardar receta' })
                 onChange={(e) => setTitle(e.target.value)}
                 error={errors.title}
             />
+
+            <ImageUpload value={imageUrl} onChange={setImageUrl} />
 
             <div className="recipe-form__row">
                 <Input id="timeMinutes" label="Tiempo (min)" type="number"
