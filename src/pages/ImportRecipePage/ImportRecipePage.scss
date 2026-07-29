@@ -107,6 +107,16 @@
     text-underline-offset: 3px;
     cursor: pointer;
   }
+
+  &__notice {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+    font-size: 14px;
+  }
 }
 
 .import-split {
